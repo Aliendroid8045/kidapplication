@@ -1,0 +1,50 @@
+package com.example.koshik.kidgalleryapp.models;
+
+/**
+ * Created by koshik on 01-12-2016.
+ */
+
+public class AlphabetImage {
+
+
+    private String thumbnail;
+    private String image;
+    private String caption;
+
+    public AlphabetImage() {
+
+    }
+
+    public AlphabetImage(String thumbnail, String image, String caption) {
+        this.thumbnail = thumbnail;
+        this.image = image;
+        this.caption = caption;
+
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+
+}

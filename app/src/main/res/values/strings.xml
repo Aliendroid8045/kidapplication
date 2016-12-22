@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">KidsBook</string>
+    <string name="drawer_open">Select Item</string>
+    <string name="drawer_close">KidsBook</string>
+    <string name="section_animal">Animal</string>
+    <string name="section_alphabet">Alphabet</string>
+    <string name="selection_color">Color</string>
+    <string name="section_vegetables">Vegetables</string>
+    <string name="section_about_us">About Us</string>
+    <string name="logo_aboutus">About Us</string>
+
+    <string-array name="country_name">
+        <item>India</item>
+        <item>USA</item>
+        <item>UK</item>
+    </string-array>
+    <string-array name="capital_name">
+        <item>Delhi</item>
+        <item>Washington.D.C</item>
+        <item>London</item>
+    </string-array>
+    <string name="about_us_detail">All of the content we used in this application are taken from below sources.
+        none of the sources are mis-used or violate the copyright privacy policy.
+        We care about privacy of every content used in this application from different sources.
+        We really thanks the below websites for allow us to used their free content with us and help.</string>
+    <string name="link_alphabet">
+        http://www.kids-pages.com\n
+        http://www.kids-pages.com\n
+        http://www.istockphoto.com\n
+        http://www.freedigitalphotos.net</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
+
+
