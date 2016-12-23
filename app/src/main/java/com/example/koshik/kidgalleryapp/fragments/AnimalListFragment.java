@@ -58,7 +58,7 @@ public class AnimalListFragment extends ListFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("Zoo", "Retrofit Error " + error.getMessage());
+                Log.e("Animal", "Retrofit Error " + error.getMessage());
             }
         });
     }

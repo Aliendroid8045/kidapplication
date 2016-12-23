@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +16,54 @@ import android.widget.TextView;
 
 import com.example.koshik.kidgalleryapp.R;
 import com.example.koshik.kidgalleryapp.adapters.CountryAdapter;
+import com.example.koshik.kidgalleryapp.models.CountryIModelPojo;
+import com.example.koshik.kidgalleryapp.utils.CountryFlagApiInterface;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class CountryFlagFragment extends ListFragment {
-    CountryAdapter myAdapter;
+    CountryAdapter countryAdapter;
+
     public static CountryFlagFragment getInstance() {
         return new CountryFlagFragment();
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setListShown(false);
+        countryAdapter = new CountryAdapter(getActivity());
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("https://gist.githubusercontent.com/koshik8045/9ce01565b3d1ef699ae7716e229e62ba/raw/019ef4c36c51a965fcc416c021a0d78bd849a76a").build();
+        CountryFlagApiInterface flagApiInterface = restAdapter.create(CountryFlagApiInterface.class);
+        flagApiInterface.getStreams(new Callback<List<CountryIModelPojo>>() {
+            @Override
+            public void success(List<CountryIModelPojo> countryIModelPojos, Response response) {
+                if (countryIModelPojos == null || countryIModelPojos.isEmpty())
+                    return;
+                for (CountryIModelPojo modelPojo : countryIModelPojos) {
+                    countryAdapter.add(modelPojo);
+                }
+                countryAdapter.notifyDataSetChanged();
+                setListAdapter(countryAdapter);
+                setListShown(true);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e("Country","Retrofit Error"+error.getMessage());
+
+            }
+        });
+    }
+
+    /* @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -40,6 +80,6 @@ public class CountryFlagFragment extends ListFragment {
         setListAdapter(myAdapter);
 
 
-    }
+    }*/
 }
 

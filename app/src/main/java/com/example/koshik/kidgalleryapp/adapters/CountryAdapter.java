@@ -1,29 +1,57 @@
 package com.example.koshik.kidgalleryapp.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.media.Image;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.test.SingleLaunchActivityTestCase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.koshik.kidgalleryapp.R;
+import com.example.koshik.kidgalleryapp.models.CountryIModelPojo;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 
 /**
  * Created by koshik on 21-12-2016.
  */
 
-public class CountryAdapter extends BaseAdapter {
-    Context context;
+public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> {
+    public CountryAdapter(Context context) {
+        super(context, 0);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.country_single_row, parent, false);
+            viewHolder.countryName = (TextView) convertView.findViewById(R.id.myCountryName);
+            viewHolder.capitalName = (TextView) convertView.findViewById(R.id.myCapitalName);
+            viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.myCountryImage);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        viewHolder.countryName.setText(getItem(position).getCountryName());
+        viewHolder.capitalName.setText(getItem(position).getcapitalname());
+        Picasso.with(getContext()).load(getItem(position).getThumbnail()).into(viewHolder.thumbnail);
+        return convertView;
+    }
+
+    class ViewHolder {
+        TextView countryName;
+        TextView capitalName;
+        ImageView thumbnail;
+    }
+}
+
+    /* Context context;
     ArrayList<SingleRow> mySingleData;
 
     public CountryAdapter(Context context) {
@@ -31,10 +59,10 @@ public class CountryAdapter extends BaseAdapter {
         this.context = context;
         Resources resources = context.getResources();
         String[] countryName = resources.getStringArray(R.array.country_name);
-        String[] capitalName = resources.getStringArray(R.array.capital_name);
+        String[] capitalname = resources.getStringArray(R.array.capital_name);
         int flags[] = {R.drawable.ic_next_arrow, R.drawable.ic_next_arrow, R.drawable.ic_next_arrow};
         for (int i = 0; i <=2; i++) {
-            mySingleData.add(new SingleRow(countryName[i], capitalName[i], flags[i]));
+            mySingleData.add(new SingleRow(countryName[i], capitalname[i], flags[i]));
         }
     }
 
@@ -66,11 +94,11 @@ public class CountryAdapter extends BaseAdapter {
         SingleRow temp = mySingleData.get(position);
 
         myCountry.setText(temp.countryName);
-        myCapital.setText(temp.capitalName);
+        myCapital.setText(temp.capitalname);
             myFlag.setImageResource(temp.flagImage);
 
         return view;
-        /*if (convertView == null) {
+        *//*if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.country_single_row, parent, false);
             viewHolder.myCountryName = (TextView) convertView.findViewById(R.id.myCountryName);
             viewHolder.myStateName = (TextView) convertView.findViewById(R.id.myStateName);
@@ -80,28 +108,26 @@ public class CountryAdapter extends BaseAdapter {
             viewHolder = (CountryAdapter.MyViewHolder) convertView.getTag();
         }
         viewHolder.myCountryFlag.setImageResource(flags[position]);
-        viewHolder.myStateName.setText(capitalName[position]);
+        viewHolder.myStateName.setText(capitalname[position]);
         viewHolder.myCountryName.setText(countryName[position]);
 
-        return convertView;*/
+        return convertView;*//*
     }
 
     class SingleRow {
-        String capitalName;
+        String capitalname;
         String countryName;
         int flagImage;
 
-        SingleRow(String capitalName, String countryName, int flagImage) {
-            this.capitalName = capitalName;
+        SingleRow(String capitalname, String countryName, int flagImage) {
+            this.capitalname = capitalname;
             this.countryName = countryName;
             this.flagImage = flagImage;
         }
     }
-/*
     class MyViewHolder {
         ImageView myCountryFlag;
         TextView myStateName;
         TextView myCountryName;
 
     }*/
-}
