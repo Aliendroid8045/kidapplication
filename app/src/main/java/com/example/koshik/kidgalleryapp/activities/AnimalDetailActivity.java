@@ -11,7 +11,7 @@ import com.example.koshik.kidgalleryapp.R;
 import com.example.koshik.kidgalleryapp.models.AnimalImage;
 import com.squareup.picasso.Picasso;
 
-public class AnimalActivity extends AppCompatActivity {
+public class AnimalDetailActivity extends AppCompatActivity {
     public static final String EXTRA_ANIMAL = "extra_animal";
 
     @Override

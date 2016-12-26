@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class AnimalAdapter extends ArrayAdapter<AnimalImage> {
-    public AnimalAdapter(Context context) {
+    public AnimalAdapter(Context context, int i) {
         super(context, 0);
     }
 

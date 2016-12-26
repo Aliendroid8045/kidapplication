@@ -1,6 +1,7 @@
 package com.example.koshik.kidgalleryapp.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.koshik.kidgalleryapp.R;
+import com.example.koshik.kidgalleryapp.activities.CountryFlagDetailActivity;
 import com.example.koshik.kidgalleryapp.adapters.CountryAdapter;
 import com.example.koshik.kidgalleryapp.models.CountryIModelPojo;
 import com.example.koshik.kidgalleryapp.utils.CountryFlagApiInterface;
@@ -37,10 +39,12 @@ public class CountryFlagFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setListShown(false);
-        countryAdapter = new CountryAdapter(getActivity());
+        // setListShown(false);
+        countryAdapter = new CountryAdapter(getActivity(), 0);
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://gist.githubusercontent.com/koshik8045/9ce01565b3d1ef699ae7716e229e62ba/raw/019ef4c36c51a965fcc416c021a0d78bd849a76a").build();
+                .setEndpoint("https://gist.githubusercontent.com" +
+                        "/koshik8045/9ce01565b3d1ef699ae7716e229e62ba" +
+                        "/raw/019ef4c36c51a965fcc416c021a0d78bd849a76a").build();
         CountryFlagApiInterface flagApiInterface = restAdapter.create(CountryFlagApiInterface.class);
         flagApiInterface.getStreams(new Callback<List<CountryIModelPojo>>() {
             @Override
@@ -52,34 +56,37 @@ public class CountryFlagFragment extends ListFragment {
                 }
                 countryAdapter.notifyDataSetChanged();
                 setListAdapter(countryAdapter);
-                setListShown(true);
+                //setListShown(true);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("Country","Retrofit Error"+error.getMessage());
-
+                Log.e("Country", "Retrofit Error" + error.getMessage());
             }
         });
+
     }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent = new Intent(getActivity(), CountryFlagDetailActivity.class);
+        intent.putExtra(CountryFlagDetailActivity.EXTRA_COUNTRY_FLAG, countryAdapter.getItem(position));
+        startActivity(intent);
+    }
     /* @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         myAdapter = new CountryAdapter(getActivity());
         setListAdapter(myAdapter);
-
-
     }*/
 }
 

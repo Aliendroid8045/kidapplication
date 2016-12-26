@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AnimalActivity"
+            android:name=".activities.AnimalDetailActivity"
             android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -31,9 +31,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
+
+        <activity android:name=".activities.CountryFlagDetailActivity">
+            <meta-data
+                android:name="android.support.v4.app.Fragment"
+                android:value=".fragments.CountryFlagFragment"></meta-data>
+        </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

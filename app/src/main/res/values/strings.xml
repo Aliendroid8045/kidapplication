@@ -8,17 +8,6 @@
     <string name="section_vegetables">Vegetables</string>
     <string name="section_about_us">About Us</string>
     <string name="logo_aboutus">About Us</string>
-
-    <string-array name="country_name">
-        <item>India</item>
-        <item>USA</item>
-        <item>UK</item>
-    </string-array>
-    <string-array name="capital_name">
-        <item>Delhi</item>
-        <item>Washington.D.C</item>
-        <item>London</item>
-    </string-array>
     <string name="about_us_detail">All of the content we used in this application are taken from below sources.
         none of the sources are mis-used or violate the copyright privacy policy.
         We care about privacy of every content used in this application from different sources.
@@ -29,8 +18,7 @@
         http://www.istockphoto.com\n
         http://www.freedigitalphotos.net</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_settings">Settings</string>
 </resources>
 
 

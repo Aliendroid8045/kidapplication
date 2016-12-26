@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> {
-    public CountryAdapter(Context context) {
+    public CountryAdapter(Context context, int i) {
         super(context, 0);
     }
 
