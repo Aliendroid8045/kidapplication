@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -42,9 +44,9 @@ public class CountryFlagFragment extends ListFragment {
         // setListShown(false);
         countryAdapter = new CountryAdapter(getActivity(), 0);
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://gist.githubusercontent.com" +
-                        "/koshik8045/9ce01565b3d1ef699ae7716e229e62ba" +
-                        "/raw/019ef4c36c51a965fcc416c021a0d78bd849a76a").build();
+                .setEndpoint("https://gist.githubusercontent.com/" +
+                        "koshik8045/9ce01565b3d1ef699ae7716e229e62ba/" +
+                        "raw/4c921777c17599b2ce10c23fc84858f7d65f388d").build();
         CountryFlagApiInterface flagApiInterface = restAdapter.create(CountryFlagApiInterface.class);
         flagApiInterface.getStreams(new Callback<List<CountryIModelPojo>>() {
             @Override
@@ -64,8 +66,8 @@ public class CountryFlagFragment extends ListFragment {
                 Log.e("Country", "Retrofit Error" + error.getMessage());
             }
         });
-
     }
+
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {

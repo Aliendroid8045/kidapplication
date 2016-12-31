@@ -7,9 +7,10 @@ import android.os.Parcelable;
  * Created by koshik on 23-12-2016.
  */
 
-public class CountryIModelPojo implements Parcelable{
+public class CountryIModelPojo implements Parcelable {
 
-    public static final Parcelable.Creator<CountryIModelPojo> CREATOR = new Parcelable.Creator<CountryIModelPojo>() {
+
+    public static final Creator<CountryIModelPojo> CREATOR = new Creator<CountryIModelPojo>() {
         @Override
         public CountryIModelPojo createFromParcel(Parcel in) {
             return new CountryIModelPojo(in);
@@ -19,7 +20,6 @@ public class CountryIModelPojo implements Parcelable{
             return new CountryIModelPojo[size];
         }
     };
-
     private String countryname;
     private String fullname;
     private String capitalname;
@@ -150,14 +150,14 @@ public class CountryIModelPojo implements Parcelable{
     public void writeToParcel(Parcel parcel, int i) {
         applyDefaultValues();
         parcel.writeString(countryname);
-        parcel.writeString(capitalname);
         parcel.writeString(fullname);
+        parcel.writeString(capitalname);
         parcel.writeString(phonecode);
         parcel.writeString(language);
         parcel.writeString(currency);
         parcel.writeString(region);
-        parcel.writeString(thumbnail);
         parcel.writeString(description);
+        parcel.writeString(thumbnail);
         parcel.writeString(image);
     }
 

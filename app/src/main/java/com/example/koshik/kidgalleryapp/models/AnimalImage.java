@@ -8,6 +8,17 @@ import android.os.Parcelable;
  */
 
 public class AnimalImage implements Parcelable {
+    public static final Creator<AnimalImage> CREATOR = new Creator<AnimalImage>() {
+        @Override
+        public AnimalImage createFromParcel(Parcel in) {
+            return new AnimalImage(in);
+        }
+
+        @Override
+        public AnimalImage[] newArray(int size) {
+            return new AnimalImage[size];
+        }
+    };
     private String name;
     private String species;
     private String description;
@@ -33,18 +44,6 @@ public class AnimalImage implements Parcelable {
         thumbnail = source.readString();
         image = source.readString();
     }
-
-    public static final Creator<AnimalImage> CREATOR = new Creator<AnimalImage>() {
-        @Override
-        public AnimalImage createFromParcel(Parcel in) {
-            return new AnimalImage(in);
-        }
-
-        @Override
-        public AnimalImage[] newArray(int size) {
-            return new AnimalImage[size];
-        }
-    };
 
     public String getName() {
         return name;

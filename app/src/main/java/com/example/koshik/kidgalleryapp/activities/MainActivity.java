@@ -1,17 +1,23 @@
 package com.example.koshik.kidgalleryapp.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.app.SearchManager;
 
 import com.example.koshik.kidgalleryapp.R;
+import com.example.koshik.kidgalleryapp.adapters.CountryAdapter;
 import com.example.koshik.kidgalleryapp.events.DrawerSectionItemClickedEvent;
 import com.example.koshik.kidgalleryapp.fragments.Aboutus;
 import com.example.koshik.kidgalleryapp.fragments.AnimalListFragment;
@@ -23,7 +29,9 @@ import com.example.koshik.kidgalleryapp.fragments.VegetableFragment;
 import com.example.koshik.kidgalleryapp.utils.EventBus;
 import com.squareup.otto.Subscribe;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.zip.Inflater;
+
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private String mCurrentFragmentTitle;
@@ -37,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        handleIntent(getIntent());
 
         myDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, myDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
@@ -48,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportActionBar().setTitle(R.string.drawer_open);
             }
 
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -58,6 +68,18 @@ public class MainActivity extends AppCompatActivity {
         //noinspection deprecation,deprecation,deprecation
         myDrawerLayout.setDrawerListener(drawerToggle);
         displayInitialFragment();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+        }
     }
 
     private void displayInitialFragment() {
@@ -80,6 +102,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_country_flag_detail, menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
 
     @Override
@@ -121,4 +170,6 @@ public class MainActivity extends AppCompatActivity {
         }
         mCurrentFragmentTitle = event.section;
     }
+
+
 }

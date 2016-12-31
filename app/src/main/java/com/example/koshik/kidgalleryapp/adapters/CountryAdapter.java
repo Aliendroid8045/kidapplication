@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.koshik.kidgalleryapp.R;
+import com.example.koshik.kidgalleryapp.fragments.CountryFlagFragment;
 import com.example.koshik.kidgalleryapp.models.CountryIModelPojo;
 import com.squareup.picasso.Picasso;
 
@@ -18,7 +20,9 @@ import com.squareup.picasso.Picasso;
  * Created by koshik on 21-12-2016.
  */
 
-public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> {
+public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> implements Filterable {
+
+
     public CountryAdapter(Context context, int i) {
         super(context, 0);
     }
