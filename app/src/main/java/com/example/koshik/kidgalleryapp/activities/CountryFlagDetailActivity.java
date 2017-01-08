@@ -29,7 +29,7 @@ public class CountryFlagDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        CountryIModelPojo modelPojo = getIntent().getExtras().getParcelable(EXTRA_COUNTRY_FLAG);
+        CountryIModelPojo modelPojo = getIntent().getParcelableExtra(EXTRA_COUNTRY_FLAG);
 
         TextView myCountryName = (TextView) findViewById(R.id.tvCountryName);
         TextView myCountryFullName = (TextView) findViewById(R.id.tvCountryFullName);

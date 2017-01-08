@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     getSupportActionBar().setTitle(R.string.drawer_open);
             }
 
-
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -116,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         searchView.setSubmitButtonEnabled(true);
-        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
+        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) getApplicationContext());
         return true;
     }
 
@@ -124,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextSubmit(String query) {
         return false;
     }
-
 
     @Override
     public boolean onQueryTextChange(String newText) {

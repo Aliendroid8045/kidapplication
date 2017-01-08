@@ -8,10 +8,11 @@
     <string name="section_vegetables">Vegetables</string>
     <string name="section_about_us">About Us</string>
     <string name="logo_aboutus">About Us</string>
-    <string name="about_us_detail">All of the content we used in this application are taken from below sources.
-        none of the sources are mis-used or violate the copyright privacy policy.
-        We care about privacy of every content used in this application from different sources.
-        We really thanks the below websites for allow us to used their free content with us and help.</string>
+    <string name="about_us_detail">Content of this
+        application are free service. This application may does not have perfect accuracy of data.
+        There mightbe some of data false report of data as all of content in this application are taken from Internet.
+        This application is project base.Please report any query and question to the below email address.Thanks</string>
+    <string name="e_mail">kaushikpanchal8045@gmail.com</string>
     <string name="link_alphabet">
         http://www.kids-pages.com\n
         http://www.kids-pages.com\n

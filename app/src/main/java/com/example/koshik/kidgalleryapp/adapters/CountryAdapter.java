@@ -22,11 +22,9 @@ import com.squareup.picasso.Picasso;
 
 public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> implements Filterable {
 
-
     public CountryAdapter(Context context, int i) {
         super(context, 0);
     }
-
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
