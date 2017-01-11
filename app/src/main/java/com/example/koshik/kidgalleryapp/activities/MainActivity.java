@@ -31,7 +31,7 @@ import com.squareup.otto.Subscribe;
 
 import java.util.zip.Inflater;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity {
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private String mCurrentFragmentTitle;
@@ -108,18 +108,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_country_flag_detail, menu);
 
-        SearchManager searchManager =
+       /* SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         searchView.setSubmitButtonEnabled(true);
-        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) getApplicationContext());
+        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) getApplicationContext());*/
         return true;
     }
 
-    @Override
+   /* @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
     }
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
-    }
+    }*/
 
     @Override
     protected void onStart() {
