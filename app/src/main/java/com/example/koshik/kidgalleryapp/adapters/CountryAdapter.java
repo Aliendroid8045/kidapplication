@@ -1,6 +1,7 @@
 package com.example.koshik.kidgalleryapp.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,20 +22,26 @@ import com.squareup.picasso.Picasso;
  */
 
 public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> implements Filterable {
+    Typeface cfont;
 
     public CountryAdapter(Context context, int i) {
         super(context, 0);
     }
+
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
+            cfont = Typeface.createFromAsset(getContext().getAssets(), "fonts/Yahoo.ttf");
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.country_single_row, parent, false);
             viewHolder.countryName = (TextView) convertView.findViewById(R.id.myCountryName);
             viewHolder.capitalName = (TextView) convertView.findViewById(R.id.myCapitalName);
             viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.myCountryImage);
+            viewHolder.capitalName.setTypeface(cfont);
+            viewHolder.countryName.setTypeface(cfont);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

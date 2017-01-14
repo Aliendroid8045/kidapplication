@@ -1,5 +1,6 @@
 package com.example.koshik.kidgalleryapp.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,8 +37,8 @@ public class AnimalListFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-       // setListShown(false);
-        animalAdapter = new AnimalAdapter(getActivity(),0);
+        // setListShown(false);
+        animalAdapter = new AnimalAdapter(getActivity(), 0);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://gist.githubusercontent." +
                         "com/koshik8045/2ff1e5e81118d0720a988067e9016fa9/" +
@@ -54,7 +55,7 @@ public class AnimalListFragment extends ListFragment {
                 }
                 animalAdapter.notifyDataSetChanged();
                 setListAdapter(animalAdapter);
-               // setListShown(true);
+                // setListShown(true);
             }
 
             @Override
@@ -63,7 +64,6 @@ public class AnimalListFragment extends ListFragment {
             }
         });
     }
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);

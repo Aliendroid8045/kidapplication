@@ -2,7 +2,9 @@ package com.example.koshik.kidgalleryapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
@@ -29,12 +31,17 @@ import com.example.koshik.kidgalleryapp.fragments.VegetableFragment;
 import com.example.koshik.kidgalleryapp.utils.EventBus;
 import com.squareup.otto.Subscribe;
 
+import java.util.Locale;
 import java.util.zip.Inflater;
+
+import static android.R.attr.typeface;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private String mCurrentFragmentTitle;
+    Context context;
+    Typeface typeface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         handleIntent(getIntent());
+
 
         myDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, myDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
@@ -170,4 +178,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void setTypeface(Typeface typeface) {
+        this.typeface = typeface;
+    }
 }

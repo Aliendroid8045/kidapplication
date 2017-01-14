@@ -1,5 +1,7 @@
 package com.example.koshik.kidgalleryapp.activities;
 
+import android.app.ListFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.koshik.kidgalleryapp.R;
+import com.example.koshik.kidgalleryapp.fragments.AnimalListFragment;
 import com.example.koshik.kidgalleryapp.models.AnimalImage;
 import com.squareup.picasso.Picasso;
 
@@ -18,10 +21,9 @@ public class AnimalDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_activity_detail);
-
-        Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
-        setSupportActionBar( toolbar );
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         AnimalImage animalImage = getIntent().getExtras().getParcelable(EXTRA_ANIMAL);
 
@@ -33,4 +35,6 @@ public class AnimalDetailActivity extends AppCompatActivity {
         description.setText(animalImage.getDescription());
         Picasso.with(this).load(animalImage.getImage()).into(images);
     }
+    public void myData(){}
+
 }
