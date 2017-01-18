@@ -1,3 +1,4 @@
+/*
 package com.example.koshik.kidgalleryapp.activities;
 
 import android.content.Intent;
@@ -41,3 +42,4 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 }
+*/

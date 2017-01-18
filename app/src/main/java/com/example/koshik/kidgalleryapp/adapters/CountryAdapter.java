@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> implements Filterable {
-    Typeface cfont;
+   // Typeface cfont;
 
     public CountryAdapter(Context context, int i) {
         super(context, 0);
@@ -35,13 +35,13 @@ public class CountryAdapter extends ArrayAdapter<CountryIModelPojo> implements F
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            cfont = Typeface.createFromAsset(getContext().getAssets(), "fonts/Yahoo.ttf");
+           // cfont = Typeface.createFromAsset(getContext().getAssets(), "fonts/Yahoo.ttf");
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.country_single_row, parent, false);
             viewHolder.countryName = (TextView) convertView.findViewById(R.id.myCountryName);
             viewHolder.capitalName = (TextView) convertView.findViewById(R.id.myCapitalName);
             viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.myCountryImage);
-            viewHolder.capitalName.setTypeface(cfont);
-            viewHolder.countryName.setTypeface(cfont);
+            //viewHolder.capitalName.setTypeface(cfont);
+           // viewHolder.countryName.setTypeface(cfont);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

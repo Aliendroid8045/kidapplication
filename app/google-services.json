@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "719158032246",
+    "firebase_url": "https://myfirstapp-4c975.firebaseio.com",
+    "project_id": "myfirstapp-4c975",
+    "storage_bucket": "myfirstapp-4c975.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719158032246:android:95020f8cc225cbeb",
+        "android_client_info": {
+          "package_name": "com.example.koshik.kidgalleryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719158032246-bescpcfbii4ireiklmdqq8fsm55d19qt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALy_YDFZb2EFAlqSY000kYWC65tc8QL-s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

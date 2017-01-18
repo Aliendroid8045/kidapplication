@@ -34,6 +34,7 @@ public class DrawerNavigationListView extends ListView implements AdapterView.On
         adapter.add("Countries");
         adapter.add("Privacy");
         adapter.add("About Us");
+        adapter.add("MyProfile");
 
         setAdapter(adapter);
         setOnItemClickListener(this);

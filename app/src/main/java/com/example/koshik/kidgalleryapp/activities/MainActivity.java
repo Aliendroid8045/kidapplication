@@ -1,16 +1,12 @@
 package com.example.koshik.kidgalleryapp.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
-import android.graphics.Typeface;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,29 +15,22 @@ import android.view.View;
 import android.app.SearchManager;
 
 import com.example.koshik.kidgalleryapp.R;
-import com.example.koshik.kidgalleryapp.adapters.CountryAdapter;
 import com.example.koshik.kidgalleryapp.events.DrawerSectionItemClickedEvent;
 import com.example.koshik.kidgalleryapp.fragments.Aboutus;
 import com.example.koshik.kidgalleryapp.fragments.AnimalListFragment;
 import com.example.koshik.kidgalleryapp.fragments.AlphabetFragment;
 import com.example.koshik.kidgalleryapp.fragments.ColorFragment;
 import com.example.koshik.kidgalleryapp.fragments.CountryFlagFragment;
+import com.example.koshik.kidgalleryapp.fragments.MyProfile;
 import com.example.koshik.kidgalleryapp.fragments.PrivacyFragment;
 import com.example.koshik.kidgalleryapp.fragments.VegetableFragment;
 import com.example.koshik.kidgalleryapp.utils.EventBus;
 import com.squareup.otto.Subscribe;
 
-import java.util.Locale;
-import java.util.zip.Inflater;
-
-import static android.R.attr.typeface;
-
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private String mCurrentFragmentTitle;
-    Context context;
-    Typeface typeface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,14 +160,13 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, CountryFlagFragment.getInstance()).commit();
         } else if (event.section.equalsIgnoreCase("Privacy")) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, PrivacyFragment.getInstance()).commit();
+        } else if (event.section.equalsIgnoreCase("MyProfile")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, MyProfile.getInstance()).commit();
+
         } else {
+
             return;
         }
         mCurrentFragmentTitle = event.section;
-    }
-
-
-    public void setTypeface(Typeface typeface) {
-        this.typeface = typeface;
     }
 }

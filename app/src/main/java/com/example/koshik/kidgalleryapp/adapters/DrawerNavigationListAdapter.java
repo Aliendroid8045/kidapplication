@@ -19,7 +19,7 @@ public class DrawerNavigationListAdapter extends ArrayAdapter<String> {
     private final int[] navigationListItemImages =
             {R.drawable.ic_animal, R.drawable.ic_alphabet,
                     R.drawable.ic_color, R.drawable.ic_vegetables,
-                    R.drawable.ic_countries, R.drawable.ic_privacy, R.drawable.ic_aboutus};
+                    R.drawable.ic_countries, R.drawable.ic_privacy, R.drawable.ic_aboutus, R.drawable.profile};
 
     public DrawerNavigationListAdapter(Context context) {
         super(context, 0);
